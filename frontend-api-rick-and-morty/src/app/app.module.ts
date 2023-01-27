@@ -7,6 +7,7 @@ import { CharacterComponent } from './components/character/character.component';
 import { CharacterListComponent } from './components/character-list/character-list.component';
 import { ImageComponent } from './components/image/image.component';
 import { NavComponent } from './components/nav/nav.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { NavComponent } from './components/nav/nav.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    BrowserAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

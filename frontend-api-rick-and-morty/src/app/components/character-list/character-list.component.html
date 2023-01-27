@@ -1,1 +1,70 @@
-<p>character-list works!</p>
+<!-- Aquí se hace el render de los personajes de rick and morty -->
+<div class="characters--grid">
+  <app-character
+    [character]="character"
+    *ngFor="let character of characters"
+    (showCharacterDetail)="onShowCharacterDetail($event)"
+  ></app-character>
+</div>
+<!-- Aquí se muestra el detalle del personaje seleccionado -->
+<aside
+  *ngIf="characterChosen"
+  class="character-detail"
+  [class.active]="showCharacterDetail"
+>
+  <img
+    (click)="toggleCharacterDetail()"
+    src="./assets/images/icon_close.png"
+    alt="Close icon"
+  />
+  <!-- Aquí se hace el render del componente img -->
+  <app-image *ngIf="characterChosen.image",[img]="characterChosen.image" class="character-img"></app-image>
+  <div class="character-info">
+    <p>{{ characterChosen.name }}</p>
+    <p>Status: {{ characterChosen.status }}</p>
+    <p>Specie: {{ characterChosen.species }}</p>
+    <p>Gender: {{ characterChosen.gender }}</p>
+    <p>Created: {{ characterChosen.created | date }}</p>
+    <button (click)="onShowEpisodesDetail()">Episodes</button>
+  </div>
+
+
+<!-- Aquí se hace el render de guardar  los personajes favoritos -->
+  <div class="add-to-cart">
+    <button
+    class="primary-button"
+    style="margin-top: 10px;"
+    (click)="onAddedCharacter($event)"
+    >
+      <img style="width: 20px;"
+        src="./assets/images/corazon.png"
+        alt="Add to favorite cart icon"
+      />
+      <span>
+        Save as favorite
+      </span>
+    </button>
+
+
+    <button
+    class="secondary-button"
+    style="margin-top: 3px;"
+    (click)="onShowLocationDetail('axc')"
+    >
+      <span>
+        Location
+      </span>
+    </button>
+  </div>
+</aside>
+
+
+<button
+  (click)="onLoadMore()"
+  class="primary-button load-more"
+>
+  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+    <path stroke-linecap="round" stroke-linejoin="round" d="M16.023 9.348h4.992v-.001M2.985 19.644v-4.992m0 0h4.992m-4.993 0l3.181 3.183a8.25 8.25 0 0013.803-3.7M4.031 9.865a8.25 8.25 0 0113.803-3.7l3.181 3.182m0-4.991v4.99" />
+  </svg>
+  Load more
+</button>
