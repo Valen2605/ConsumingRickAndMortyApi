@@ -1,1 +1,5 @@
-<p>image works!</p>
+<!-- Componente para reenderizar las imagenes de la Api -->
+<img class="product-img" *ngIf="img; else defaultImage" [src]="img" (load)="imgLoad()"(error)="imgError()"/>
+<ng-template #defaultImage>
+  <img class="product-img" [src]="imageDefault" alt="">
+</ng-template>
